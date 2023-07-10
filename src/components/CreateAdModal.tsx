@@ -17,7 +17,14 @@ export function CreateAdModal() {
             <label htmlFor="game" className="font-semibold">
               Which game?
             </label>
-            <Input id="game" placeholder="Select the game you want to play" />
+            <select
+              id="game"
+              className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+            >
+              <option disabled selected value="">
+                Select the game you want to play
+              </option>
+            </select>
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="name">Your name (or nickname)</label>
