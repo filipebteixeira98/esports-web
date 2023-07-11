@@ -156,14 +156,14 @@ export function CreateAdModal() {
               </div>
             </div>
           </div>
-          <div className="mt-2 flex gap-2 items-center text-sm">
+          <label className="mt-2 flex gap-2 items-center text-sm">
             <Checkbox.Root className="w-6 h-6 p-1 rounded bg-zinc-900">
               <Checkbox.Indicator>
                 <Check className="w-4 h-4 text-emerald-400" />
               </Checkbox.Indicator>
             </Checkbox.Root>
             I usually connect to voice chat
-          </div>
+          </label>
           <footer className="mt-4 flex justify-end gap-4">
             <Dialog.Close
               type="button"
