@@ -37,8 +37,9 @@ export function CreateAdModal() {
             <select
               id="game"
               className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+              defaultValue=""
             >
-              <option disabled selected value="">
+              <option disabled value="">
                 Select the game you want to play
               </option>
               {games.map((game) => {
