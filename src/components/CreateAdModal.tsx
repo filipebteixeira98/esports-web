@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { Check, GameController } from 'phosphor-react'
 
 import { Input } from './Form/Input'
@@ -12,6 +13,8 @@ interface Game {
 
 export function CreateAdModal() {
   const [games, setGames] = useState<Game[]>([])
+
+  const [weekDays, setWeekDays] = useState<string[]>([])
 
   useEffect(() => {
     fetch('http://localhost:3333/games')
@@ -73,38 +76,76 @@ export function CreateAdModal() {
           <div className="flex gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="weekDays">When do you usually play?</label>
-              <div className="grid grid-cols-4 gap-2">
-                <button title="Sunday" className="w-8 h-8 rounded bg-zinc-900">
+              <ToggleGroup.Root
+                type="multiple"
+                className="grid grid-cols-4 gap-2"
+                value={weekDays}
+                onValueChange={setWeekDays}
+              >
+                <ToggleGroup.Item
+                  value="0"
+                  title="Sunday"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('0') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
+                >
                   S
-                </button>
-                <button title="Monday" className="w-8 h-8 rounded bg-zinc-900">
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="1"
+                  title="Monday"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('1') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
+                >
                   M
-                </button>
-                <button title="Tuesday" className="w-8 h-8 rounded bg-zinc-900">
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="2"
+                  title="Tuesday"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('2') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
+                >
                   T
-                </button>
-                <button
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="3"
                   title="Wednesday"
-                  className="w-8 h-8 rounded bg-zinc-900"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('3') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
                 >
                   W
-                </button>
-                <button
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="4"
                   title="Thursday"
-                  className="w-8 h-8 rounded bg-zinc-900"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('4') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
                 >
                   T
-                </button>
-                <button title="Friday" className="w-8 h-8 rounded bg-zinc-900">
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="5"
+                  title="Friday"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('5') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
+                >
                   F
-                </button>
-                <button
+                </ToggleGroup.Item>
+                <ToggleGroup.Item
+                  value="6"
                   title="Saturday"
-                  className="w-8 h-8 rounded bg-zinc-900"
+                  className={`w-8 h-8 rounded ${
+                    weekDays.includes('6') ? 'bg-violet-500' : 'bg-zinc-900'
+                  }`}
                 >
                   S
-                </button>
-              </div>
+                </ToggleGroup.Item>
+              </ToggleGroup.Root>
             </div>
             <div className="flex flex-col gap-2 flex-1">
               <label htmlFor="hourStart">What time of day?</label>
